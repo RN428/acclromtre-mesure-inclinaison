@@ -1,11 +1,40 @@
 basic.forever(function () {
     if (input.acceleration(Dimension.Y) < -100) {
-        basic.showIcon(IconNames.Sad)
+        basic.showLeds(`
+            . . # . .
+            . # # # .
+            # . # . #
+            . . # . .
+            . . # . .
+            `)
     } else {
         if (input.acceleration(Dimension.Y) > 100) {
-            basic.showIcon(IconNames.Happy)
-        } else {
-            basic.showIcon(IconNames.Yes)
+            basic.showLeds(`
+                . . # . .
+                . . # . .
+                # . # . #
+                . # # # .
+                . . # . .
+                `)
+        } else if (input.acceleration(Dimension.X) < 100) {
+            basic.showLeds(`
+                . . # . .
+                . # . . .
+                # # # # #
+                . # . . .
+                . . # . .
+                `)
+            if (input.acceleration(Dimension.X) > 100) {
+                basic.showLeds(`
+                    . . # . .
+                    . . . # .
+                    # # # # #
+                    . . . # .
+                    . . # . .
+                    `)
+            } else {
+                basic.showIcon(IconNames.Yes)
+            }
         }
     }
 })
